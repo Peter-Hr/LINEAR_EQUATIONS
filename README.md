@@ -4,13 +4,13 @@
 
 ## Specifikace
 
-*Sem napište stručnou specifikaci vašeho programu - co váš program dělá (podobně, jako jste mi psali do mailu). Stačí zhruba 1 odstavec.*
+Program za vstup berie počet rovníc ktoré chce užívateľ zadať, následne užívateľ zadáva rovnice. Program "očistí" vstup a vytvorí z neho maticu. Najskôr vykonáva Gaussovu elimínáciu, pri ktorej nedochádza k chybám zaokrúhlovania, následne sa spúšta spatná substitúcia, kde program vie zistiť že matica nie je regulárna a jej  riešenie teda "neexistuje". Na konci prichádza jednoduchý konzolový výpis s hodnotou každej premennej.
 
 ## Instalace a spuštění
 
-*Pokud je váš program v Pythonu, stačí upravit JMENO_HLAVNIHO_SOUBORU níže a případně doplnit další informace ke spuštění (jestli má nějaké parametry, vstupní soubory, ...). Pokud je parametrů hodně nebo je potřeba nějaký speciální formát vstupních souborů, nechte tuto sekci jen stručnou a podrobněji to popište v uživatelské dokumentaci (a sem dejte odkaz). Pokud je program v jiném programovacím jazyce, tuto sekci vhodně upravte, abych byl při kontrole schopen nainstalovat si potřebné nástroje a program spustit.*
+Jediný vstup užívateľa je konzolový.
 
-Program se spustí příkazem: `python JMENO_HLAVNIHO_SOUBORU.py`
+Program se spustí příkazem: `python LINEAR_EQUATIONS.py`
 
 ## Dokumentace
 
