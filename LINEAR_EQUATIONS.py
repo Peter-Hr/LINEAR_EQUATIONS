@@ -26,7 +26,7 @@ def Back_substitution(matrix,Count_of_variables,variables):
             if o == unknowns-1:
                 if number == 0:
                     print("Not possible")
-                    return()
+                    return("Not possible")
                 else:
                     List_of_variable_constants[unknowns-1] = first/number
             else:
@@ -39,9 +39,12 @@ def Variables_printout(List_of_variable_constants,variables):
 
 def start(matrix):
     matrix, Count_of_variables, variables = Gaussian_elimination(input_engine(matrix))
-    List_of_variable_constants,variables = Back_substitution(matrix, Count_of_variables, variables)
-    Variables_printout(List_of_variable_constants,variables)
-    return()
+    if Back_substitution(matrix, Count_of_variables, variables) == "Not possible":
+        return()
+    else:
+        List_of_variable_constants,variables = Back_substitution(matrix, Count_of_variables, variables)
+        Variables_printout(List_of_variable_constants,variables)
+        return()
 
 def input_engine(matrix):
 
