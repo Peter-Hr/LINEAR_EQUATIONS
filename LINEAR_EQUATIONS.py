@@ -15,7 +15,7 @@ def Gaussian_elimination(matrix_variables):
                 matrix[riadok][_] = matrix[riadok][_] - Copy_of_current_column[_]
     return(matrix, Count_of_variables, variables)
 
-def Back_substitution(matrix,Count_of_variables,variables):
+def Back_substitution(matrix,Count_of_variables):
     unknowns = 0
     List_of_variable_constants = [1] * Count_of_variables
     for i in range(1, len(matrix) + 1):
@@ -25,13 +25,12 @@ def Back_substitution(matrix,Count_of_variables,variables):
             number = (matrix[i * -1][(o+1)*-1])*List_of_variable_constants[o]
             if o == unknowns-1:
                 if number == 0:
-                    print("Not possible")
-                    return("Not possible")
+                    raise Exception("Not possible")
                 else:
                     List_of_variable_constants[unknowns-1] = first/number
             else:
                 first-=number
-    return(List_of_variable_constants,variables)
+    return(List_of_variable_constants)
 
 def Variables_printout(List_of_variable_constants,variables):
     for i in range(1, len(List_of_variable_constants)+1):
@@ -39,12 +38,9 @@ def Variables_printout(List_of_variable_constants,variables):
 
 def start(matrix):
     matrix, Count_of_variables, variables = Gaussian_elimination(input_engine(matrix))
-    if Back_substitution(matrix, Count_of_variables, variables) == "Not possible":
-        return()
-    else:
-        List_of_variable_constants,variables = Back_substitution(matrix, Count_of_variables, variables)
-        Variables_printout(List_of_variable_constants,variables)
-        return()
+    List_of_variable_constants = Back_substitution(matrix, Count_of_variables)
+    Variables_printout(List_of_variable_constants,variables)
+    return()
 
 def input_engine(matrix):
 
