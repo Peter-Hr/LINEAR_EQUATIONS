@@ -16,8 +16,12 @@ Funkcia start je jediná funkcia spúštaná samostatne; jej vstup je prázdny l
 **Podfunkcie:**
 * handeling_of_input
 * equation_input
-* insert\
+* insert
+
 **Výstup** funkcie **je finálna matica a set premenných**.
+
+<details><summary>Click to expand</summary>
+
 #### handeling_of_input
 Funkcia je **volaná funkciou input_engine s paratmetrom matrix**.\
 Jej úlohou je zistit od užívatela **počet rovníc a následne dané rovnice**. Fukncia spušta funkciu equation_input a následne s parametrami predanými tou funkciou spušta insert.\
@@ -32,6 +36,6 @@ Výstup je **zoznam touplov premenných s ich koeficientami, konštanta, set pre
 Funkcia so **vstupnými parametrami terms, constant, matrix**.\
 Úloha funkcie je **vložiť koeficienty premenných a konštantu na správne miesto do matice matrix**.\
 Funkcia vracia maticu matrix.
-
+</details>
 
 
