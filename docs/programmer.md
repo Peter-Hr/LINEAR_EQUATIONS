@@ -38,4 +38,21 @@ Funkcia so **vstupnými parametrami terms, constant, matrix**.\
 Funkcia vracia maticu matrix.
 </details>
 
+### Gaussian_elimination
+Funkcia berie **vstup priamo z funkcie input_engine** t.j. **touple (matrix, variables)**.\
+**Úloha** funkcie **je upraviť maticu do trojuholníkového tvaru bez zaokrúhľovacej chyby**.
+Využíva pri tom prácu s listom, a riadkové úpravy.\
+**Výstup** funkcie **je (matica,počet premenných,premenné)**.
+
+### Back_substitution
+**Vstupné dáta** funkcie **sú upravená trojuholníková matica a počet premenných**.
+Funckia **vykonáva** obyčajnu **spatnú substituciu**, keď príde na to, že **matica nie je regulárna vypíše chybu "Not possible".**
+
+### Variables_printout
+Funkcia za **vstup** berie **zoznam hodnôt premenných a premenné**, úloha funckie je **správne vypísanie hodnôt a premenných do konzole**.
+
+
+
+
+
 
