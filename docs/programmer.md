@@ -8,7 +8,8 @@
 * Variables_printout
 
 ### start
-Funkcia start je jediná funkcia spúštaná samostatne; jej vstup je prázdny list. Jej úlohou je spustit funkciu na vstup, následne upravený vstup vložiť do funkcie gaussovej eliminácie a výstup z nej vložiť do spatnej substitúcie, ktorej výstup následne predáva do funkcie Variables_printout
+Funkcia start je **jediná funkcia spúštaná samostatne**; jej **vstup je prázdny list**.\
+Jej úlohou je **spustit funkciu na vstup**, následne **upravený vstup vložiť do funkcie gaussovej eliminácie** a **výstup z nej vložiť do spatnej substitúcie**, **ktorej výstup následne predáva do funkcie Variables_printout**.
 ### input_engine
 **Prvá** funkcia **spúštaná funckiou start**.\
 **Vstup** funkcie **je matica matrix**.
