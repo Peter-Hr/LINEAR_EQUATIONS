@@ -1,7 +1,8 @@
 # Ukázky použití
 
-Vstup zdávam v tvare Počet rovníc - jeden riadok
-Každá dalšia rovnica v novom riadku.
+Vstup zdávam v tvare: 
+* Počet rovníc - jeden riadok
+* Každá dalšia rovnica v novom riadku
 
 ## Vstupy 
 
