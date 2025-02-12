@@ -19,7 +19,7 @@ Vstup zdávam v tvare:
 * `2x+2y+2z=6`
 * `3x+3y+3z=12`
 ##### Vystup
-* Not possible
+* Error: Not possible
 ### 4 rovnice s riešením
 * `4`
 * `2x+3y-z+4w=10`
