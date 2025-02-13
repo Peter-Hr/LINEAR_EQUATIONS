@@ -2,7 +2,7 @@
 
 ## Specifikace
 
-Program za vstup berie počet rovníc ktoré chce užívateľ zadať, následne užívateľ zadáva rovnice. Program "očistí" vstup a vytvorí z neho maticu. Najskôr vykonáva Gaussovu elimínáciu, pri ktorej nedochádza k chybám zaokrúhlovania, následne sa spúšta spatná substitúcia, kde program vie zistiť, že matica nie je regulárna a jej  riešenie teda "neexistuje". Na konci prichádza jednoduchý konzolový výpis s hodnotou každej premennej.
+Program za vstup berie počet rovníc ktoré chce užívateľ zadať, následne užívateľ zadáva rovnice. Program "očistí" vstup a vytvorí z neho maticu. Najskôr vykonáva Gaussovu elimínáciu, pri ktorej nedochádza k chybám zaokrúhlovania, následne sa spúšta spatná substitúcia, kde **program vie zistiť a vypočítať**, **či maticá ma práve jedno, nekonečne veľa alebo žiadne riešenie**. **Na konci** prichádza **jednoduchý konzolový výpis** s **hodnotou každej premennej**.
 
 ## Instalace a spuštění
 
