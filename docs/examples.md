@@ -46,7 +46,16 @@ Vstup zdávam v tvare:
 * `-4y+z=-2`
 * `0x=0`
 ##### Vystup 
-* x = (5.0-(3.0)y-(-1.0)z)/2.0
-* y = (-4.0-(2.0)z)/-8.0
+* x = (5.0-(3.0)*y-(-1.0)*z)/2.0
+* y = (-4.0-(2.0)*z)/-8.0  
 * z = z
+* Infinite solutions
+### 2 rovnice s parametrizovaným riešením
+* `2`
+* `8z+3y+1x-9=0`
+* `2z-4=0`
+##### Vystup 
+* x = (9.0-(3.0)*y-(8.0)*z)/1.0
+* z = (4.0)/2.0
+* y = y
 * Infinite solutions
