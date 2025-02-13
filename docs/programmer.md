@@ -35,14 +35,15 @@ Výstup je **zoznam touplov premenných s ich koeficientami, konštanta, set pre
 </details>
 
 ### Gaussian_elimination
-Funkcia berie **vstup priamo z funkcie Input_engine** t.j. **touple (matrix, variables)**.\
+Funkcia berie **vstup priamo z funkcie Input_engine** t.j. **matrix**.\
 **Úloha** funkcie **je upraviť maticu do trojuholníkového tvaru bez zaokrúhľovacej chyby**.
 Využíva pri tom prácu s listom, a riadkové úpravy.\
-**Výstup** funkcie **je (matica,počet premenných,premenné)**.
+**Výstup** funkcie **je matica**.
 
 ### Back_substitution
-**Vstupné dáta** funkcie **sú upravená trojuholníková matica a počet premenných**.
-Funckia **vykonáva** obyčajnu **spatnú substituciu**, keď príde na to, že **matica nie je regulárna vypíše chybu "Not possible".**
+**Vstupné dáta** funkcie **sú upravená trojuholníková matica a  premenných**.
+Funckia **vykonáva** obyčajnu **spatnú substituciu**, pri **ktorej môžu nastať 3 prípady**, matica **má práve jedno riešenie**, matica má **nekonečne veľa riešení** a matica **nemá riešenie**.\
+Funkcia správne **vypíše výstup celého programu**.
 
 
 
