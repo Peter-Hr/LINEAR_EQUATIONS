@@ -1,46 +1,41 @@
 # Programátorská dokumentace
 
 ## Hlavné funkcie
-* start
-* input_engine
+* Start
+* Input_engine
 * Gaussian_elimination
 * Back_substitution
-* Variables_printout
 
-### start
-Funkcia start je **jediná funkcia spúštaná samostatne**; jej **vstup je prázdny list**.\
-Jej úlohou je **spustit funkciu na vstup**, následne **upravený vstup vložiť do funkcie gaussovej eliminácie** a **výstup z nej vložiť do spatnej substitúcie**, **ktorej výstup následne predáva do funkcie Variables_printout**.
-### input_engine
-**Prvá** funkcia **spúštaná funckiou start**.\
+
+### Start
+Funkcia Start je **jediná funkcia spúštaná samostatne**; jej **vstup je prázdny list**.\
+Jej úlohou je **spustit funkciu na vstup**, následne **upravený vstup vložiť do funkcie gaussovej eliminácie** a **výstup z nej vložiť do spatnej substitúcie**, **ktorá vstup spracuje a správne interpretuje užívatelovi**.
+### Input_engine
+**Prvá** funkcia **spúštaná funckiou Start**.\
 **Vstup** funkcie **je matica matrix**.
 
 **Podfunkcie:**
-* handeling_of_input
-* equation_input
-* insert
+* Handeling_of_input
+* Equation_input
 
 **Výstup** funkcie **je finálna matica a set premenných**.
 
 <details><summary>Click to expand</summary>
 
-#### handeling_of_input
-Funkcia je **volaná funkciou input_engine s paratmetrom matrix**.\
-Jej úlohou je zistit od užívatela **počet rovníc a následne dané rovnice**. Fukncia spušta funkciu equation_input a následne s parametrami predanými tou funkciou spušta insert.\
+#### Handeling_of_input
+Funkcia je **volaná funkciou Input_engine s paratmetrom matrix**.\
+Jej úlohou je zistit od užívatela **počet rovníc a následne dané rovnice**. Fukncia spušta funkciu Equation_input a následne s parametrami predanými tou funkciou vytvára maticu a set premenných.\
 **Výstup je finálna matica, a set premenných**.
-##### equation_input
-Funkcia **volaná funkciou handeling_of_input**.\
+##### Equation_input
+Funkcia **volaná funkciou Handeling_of_input**.\
 **Vstup je rovnica**.\
 Úlohou tejto funkcie je **správne naformátovať vstup od užívateľa** t.j. oddeliť pravú stranu rovnice od tej ľavej (premenné a konštanta)
 a získať všetky konštanty.\
 Výstup je **zoznam touplov premenných s ich koeficientami, konštanta, set premennych**.
-##### insert
-Funkcia so **vstupnými parametrami terms, constant, matrix**.\
-Úloha funkcie je **vložiť koeficienty premenných a konštantu na správne miesto do matice matrix**.\
-Funkcia vracia maticu matrix.
 </details>
 
 ### Gaussian_elimination
-Funkcia berie **vstup priamo z funkcie input_engine** t.j. **touple (matrix, variables)**.\
+Funkcia berie **vstup priamo z funkcie Input_engine** t.j. **touple (matrix, variables)**.\
 **Úloha** funkcie **je upraviť maticu do trojuholníkového tvaru bez zaokrúhľovacej chyby**.
 Využíva pri tom prácu s listom, a riadkové úpravy.\
 **Výstup** funkcie **je (matica,počet premenných,premenné)**.
@@ -49,8 +44,7 @@ Využíva pri tom prácu s listom, a riadkové úpravy.\
 **Vstupné dáta** funkcie **sú upravená trojuholníková matica a počet premenných**.
 Funckia **vykonáva** obyčajnu **spatnú substituciu**, keď príde na to, že **matica nie je regulárna vypíše chybu "Not possible".**
 
-### Variables_printout
-Funkcia za **vstup** berie **zoznam hodnôt premenných a premenné**, úloha funckie je **správne vypísanie hodnôt a premenných do konzole**.
+
 
 
 
