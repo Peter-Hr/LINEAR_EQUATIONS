@@ -41,7 +41,7 @@ Využíva pri tom prácu s listom, a riadkové úpravy.\
 **Výstup** funkcie **je matica**.
 
 ### Back_substitution
-**Vstupné dáta** funkcie **sú upravená trojuholníková matica a  premenných**.
+**Vstupné dáta** funkcie **sú upravená trojuholníková matica a zoznam premenných**.
 Funckia **vykonáva** obyčajnu **spatnú substituciu**, pri **ktorej môžu nastať 3 prípady**, matica **má práve jedno riešenie**, matica má **nekonečne veľa riešení** a matica **nemá riešenie**.\
 Funkcia správne **vypíše výstup celého programu**.
 
