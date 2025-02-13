@@ -1,52 +1,92 @@
 # Description: Program that solves a system of linear equations using Gaussian elimination and back substitution.
-def Gaussian_elimination(matrix_variables):
-    matrix = matrix_variables[0]
-    variables = matrix_variables[1]
-    Count_of_variables = len(matrix)
-    for column in range(Count_of_variables-1):
-        for riadok in range((column+1), Count_of_variables):
-            Copy_of_current_column = matrix[column].copy()
-            Multiplier_0 = matrix[column][column]
-            Multiplier = matrix[riadok][column]
-            for _ in range(len(Copy_of_current_column)):
-                Copy_of_current_column[_] = Copy_of_current_column[_]*Multiplier
-            for _ in range(len(matrix[riadok])):
-                matrix[riadok][_] = matrix[riadok][_] * Multiplier_0
-                matrix[riadok][_] = matrix[riadok][_] - Copy_of_current_column[_]
-    return(matrix, Count_of_variables, variables)
+def Gaussian_elimination(matrix):
+    count_of_variables = len(matrix)
+    pos = 0
+    for column in range(count_of_variables-1):
+        roww = column
+        list_of_variables = []
+        for row_lower_than_roww in range(roww, count_of_variables):
+            col = min(roww,(len(matrix[row_lower_than_roww])-1))
+            list_of_variables.append(abs(matrix[row_lower_than_roww][col]))
+        max_value = max(list_of_variables)
+        max_index = list_of_variables.index(abs(max_value))+pos
+        matrix[roww], matrix[max_index] = matrix[max_index], matrix[roww]
+        pos+=1
+        for roow in range((column+1), count_of_variables):
+            copy_of_current_column = matrix[column].copy()
+            multiplier_0 = matrix[column][column]
+            multiplier = matrix[roow][column]
+            for _ in range(len(copy_of_current_column)):
+                copy_of_current_column[_] = copy_of_current_column[_]*multiplier
+            for _ in range(len(matrix[roow])):
+                matrix[roow][_] = matrix[roow][_] * multiplier_0
+                matrix[roow][_] = matrix[roow][_] - copy_of_current_column[_]
+    return(matrix)
 
-def Back_substitution(matrix,Count_of_variables):
-    unknowns = 0
-    List_of_variable_constants = [1] * Count_of_variables
-    for i in range(1, len(matrix) + 1):
-        unknowns+=1
-        first = matrix[i * -1].pop(-1)
-        for o in range(0, unknowns):
-            number = (matrix[i * -1][(o+1)*-1])*List_of_variable_constants[o]
-            if o == unknowns-1:
-                if number == 0:
-                    raise Exception("Not possible")
-                else:
-                    List_of_variable_constants[unknowns-1] = first/number
+
+def Back_substitution(matrix,variables):
+    coeffs = [row[:-1] for row in matrix]
+    nulls_row= []
+    for i in range(len(coeffs)):
+        non_zero = False
+        for m in range(len(coeffs[i])):
+            if coeffs[i][m] != 0:
+                non_zero = True
+                break
+        if not non_zero:
+            if matrix[i][-1] != 0:
+                return "No solution"
             else:
-                first-=number
-    return(List_of_variable_constants)
+                nulls_row.append(i)
+    if len(nulls_row) == 0:
+        pass
+    else:
+        min_null_row = min(nulls_row)
+        coeffs = coeffs[:min_null_row]
+        matrix = matrix[:min_null_row]
+    constants = [row[-1] for row in matrix]
+    pivots = set()
+    for i in range(len(coeffs)):
+        if coeffs[i][i] != 0:
+            pivots.update(variables[i])
+    free_vars = set(variables) - pivots
+    if len(pivots) == len(variables):
+        solutions = {var: 0 for var in variables}
+        for i in range(len(coeffs)-1, -1, -1):
+            sum_ax = sum(coeffs[i][j] * solutions[variables[j]] for j in range(i+1, len(coeffs)))
+            solutions[variables[i]] = (constants[i] - sum_ax) / coeffs[i][i]
+        [print(f"{key} = {round(value,2)}") for key, value in solutions.items()]
+        return "Unique solution"
+    else:
+        for i in range(len(constants)):
+            first = True
+            for m in range(len(coeffs[i])):
+                if first:
+                    if coeffs[i][m] != 0:
+                        first = False
+                        coef = coeffs[i][m]
+                else:
 
-def Variables_printout(List_of_variable_constants,variables):
-    for i in range(1, len(List_of_variable_constants)+1):
-        print(round(List_of_variable_constants[-i],2),variables[i-1])
+                    if coeffs[i][m] == 0:
+                        continue
+                    else:
+                        constants[i] = str(constants[i])+"-(" +str(coeffs[i][m])+")" + str(variables[m])
+            constants[i] = "("+str(constants[i])+")"+"/"+str(coef)
+            print(variables[i]+" = "+constants[i])
+        for i in free_vars:
+            print(i + " = " + i)
+        return "Infinite solutions"
 
-def start(matrix):
-    matrix, Count_of_variables, variables = Gaussian_elimination(input_engine(matrix))
-    List_of_variable_constants = Back_substitution(matrix, Count_of_variables)
-    Variables_printout(List_of_variable_constants,variables)
-    return()
-
-def input_engine(matrix):
+def Start(matrix):
+    matrix, variables = Input_engine(matrix)
+    matrix = Gaussian_elimination(matrix)
+    print(Back_substitution(matrix, variables))
 
 
+def Input_engine(matrix):
 
-    def equation_input(equation): 
+
+    def Equation_input(equation): 
         equation = equation.split("=")
         constant = float(equation[1].strip())
         equation_variables = equation[0].replace(" ", "")# Remove spaces
@@ -73,24 +113,25 @@ def input_engine(matrix):
 
 
 
-    def insert(terms, constant, matrix):
-        # Extract coefficients as integers and append the constant
-        riadok = [term[0] for term in terms] + [constant]
-        matrix.append(riadok)
-        return matrix
-
-
-
-    def handeling_of_input(matrix):
-        num_equations = int(input("Enter the number of equations: "))
+    def Handeling_of_input(matrix):
+        num_of_equations = int(input("Enter the number of equations: "))
         vars = set()
+        equations = []
 
-        for _ in range(num_equations):
-            terms, constant, variables = equation_input(input("Enter equation: "))
-            matrix = insert(terms, constant, matrix) # Insert the equation into the matrix
+        for _ in range(num_of_equations):
+            terms, constant, variables = Equation_input(input("Enter equation: "))
+            equations.append((terms, constant))
             vars = vars | variables # Add the variables in current equation to the set of variables
         vars = sorted(vars)
+        
+        for m in range(len(equations)):
+            row = [0]*(len(vars)+1)
+            row[-1] = equations[m][-1]
+            for n in range(len(equations[m][0])):
+                term = equations[m][0][n][1]
+                row[vars.index(term)] = equations[m][0][n][0]
+            matrix.append(row)
         return (matrix,vars)
 
-    return(handeling_of_input(matrix))
-start([])
+    return(Handeling_of_input(matrix))
+Start([])
