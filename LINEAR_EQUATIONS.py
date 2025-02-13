@@ -46,17 +46,18 @@ def Back_substitution(matrix,variables):
         matrix = matrix[:min_null_row]
     constants = [row[-1] for row in matrix]
     pivots = set()
-    for i in range(len(coeffs)):
-        if coeffs[i][i] != 0:
-            pivots.update(variables[i])
+    for row in range(len(coeffs)):
+        for i,num in enumerate(coeffs[row]):
+            if num != 0:
+                pivots.update(variables[i])
+                break
     free_vars = set(variables) - pivots
     if len(pivots) == len(variables):
         solutions = {var: 0 for var in variables}
         for i in range(len(coeffs)-1, -1, -1):
             sum_ax = sum(coeffs[i][j] * solutions[variables[j]] for j in range(i+1, len(coeffs)))
             solutions[variables[i]] = (constants[i] - sum_ax) / coeffs[i][i]
-        [print(f"{key} = {round(value,2)}") for key, value in solutions.items()]
-        return "Unique solution"
+        return(solutions)
     else:
         for i in range(len(constants)):
             first = True
@@ -70,9 +71,10 @@ def Back_substitution(matrix,variables):
                     if coeffs[i][m] == 0:
                         continue
                     else:
-                        constants[i] = str(constants[i])+"-(" +str(coeffs[i][m])+")" + str(variables[m])
+                        constants[i] = str(constants[i])+"-(" +str(coeffs[i][m])+")" +"*"+ str(variables[m])
             constants[i] = "("+str(constants[i])+")"+"/"+str(coef)
-            print(variables[i]+" = "+constants[i])
+            pivots = sorted(list(pivots))
+            print(str(pivots[i])+" = "+constants[i])
         for i in free_vars:
             print(i + " = " + i)
         return "Infinite solutions"
