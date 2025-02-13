@@ -6,7 +6,7 @@ Program za vstup berie počet rovníc ktoré chce užívateľ zadať, následne 
 
 ## Instalace a spuštění
 
-Jediný vstup užívateľa je konzolový. Doležitý dodatok k vstupu; každá nula musí byť explicitne napisaná napr. 0x, v prípade jednotky to neplatí, x <=> 1x.
+Jediný vstup užívateľa je konzolový. Ak sa premenná nenachádza v rovnici, t.j. je nulová, netreba ju písať, to isté v prípade, že premenná ma koeficient 1, ten taktiež netreba písať.
 
 Program se spustí příkazem: `python LINEAR_EQUATIONS.py`
 
